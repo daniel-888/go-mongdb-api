@@ -20,6 +20,6 @@ WORKDIR /root
 
 COPY --from=builder /build/api/api .
 
-EXPOSE 8080
+EXPOSE 8000
 
 CMD [ "./api" ]

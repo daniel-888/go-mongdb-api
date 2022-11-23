@@ -1,5 +1,6 @@
 package main
 import (
+	"fmt"
 	"context"
 	"log"
 	"time"
@@ -21,7 +22,7 @@ func main () {
 	MONGO_PORT := os.Getenv("MONGO_PORT")
 	MONGO_DB := os.Getenv("MONGO_DB")
 
-	client, err = mongo.NewClient(options.Client().ApplyURI("mongodb://" + MONGO_USERNAME + ":" + MONGO_PASSWORD  + "@" + MONGO_HOSTNAME + ":" + MONGO_PORT + "?authSource=admin"))
+	client, err = mongo.NewClient(options.Client().ApplyURI("mongodb://" + MONGO_USERNAME + ":" + MONGO_PASSWORD  + "@" + MONGO_HOSTNAME + ":" + MONGO_PORT + "/" + MONGO_DB + "?authSource=admin"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -30,5 +31,6 @@ func main () {
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Print("mongodb connected")
 	defer client.Disconnect(ctx)
 }

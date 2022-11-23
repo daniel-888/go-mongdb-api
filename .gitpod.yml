@@ -6,6 +6,8 @@ tasks:
       chmod +x ./start-mongodb.sh
       chmod +x ./wait-for.sh
       ./start-mongodb.sh latest "" 27019 workplan Mike teamway
+      go build -o ../api
+      ../api
 
   # - command: |
   #     cp .env.docker .env
